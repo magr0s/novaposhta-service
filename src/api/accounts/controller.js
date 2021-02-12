@@ -12,9 +12,9 @@ class AccountController {
     const { body = {} } = req;
 
     const {
-      apiKey = 'apiKey',
-      webhookUrl = 'webhookUrl',
-      statuses = [1, 2]
+      apiKey,
+      webhookUrl,
+      statuses
     } = body;
 
     try {
