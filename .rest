@@ -1,0 +1,33 @@
+### Create new account
+POST http://localhost:3001/add
+content-type: application/json
+
+{
+    "apiKey": "{{$guid}}",
+    "webhookUrl": "{{$guid}}",
+    "statuses": [1, 2, 3]
+}
+
+### Start account by apiKey
+PATCH http://localhost:3001/start
+content-type: application/json
+
+{
+    "apiKey": "<API_KEY>"
+}
+
+### Stop account by apiKey
+PATCH http://localhost:3001/stop
+content-type: application/json
+
+{
+    "apiKey": "<API_KEY>"
+}
+
+### Dalete account by apiKey
+DELETE http://localhost:3000/delete
+content-type: application/json
+
+{
+    "apiKey": "<API_KEY>"
+}
