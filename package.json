@@ -2,6 +2,10 @@
   "name": "novaposhta-service",
   "version": "0.0.1",
   "description": "Novaposhta sync microservice",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "NODE_ENV=development nodemon index.js"
+  },
   "main": "index.js",
   "author": "Oleksandr Krokhmalnyi <magr0s.ak@gmail.com>",
   "license": "MIT",
