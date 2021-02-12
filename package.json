@@ -1,0 +1,9 @@
+{
+  "name": "novaposhta-service",
+  "version": "0.0.1",
+  "description": "Novaposhta sync microservice",
+  "main": "index.js",
+  "author": "Oleksandr Krokhmalnyi <magr0s.ak@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
