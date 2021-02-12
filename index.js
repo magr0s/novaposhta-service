@@ -1,25 +1,22 @@
-const express = require('express');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
+
+const DB = require('./src/db');
+const Server = require('./src/server');
 
 dotenv.config();
-
-const app = express();
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URL = process.env.MONGODB_URL;
 
+
 (
   async () => {
     try {
-      await mongoose.connect(MONGODB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      });
+      await DB.init(MONGODB_URL);
 
-      app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-      });
+      console.log(Server)
+
+      Server.start(PORT);
     } catch (err) {
       console.log(err);
     }
