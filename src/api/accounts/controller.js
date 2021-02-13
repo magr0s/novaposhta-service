@@ -1,4 +1,3 @@
-const { Model } = require('mongoose');
 const Account = require('./model');
 
 class AccountController {
@@ -41,7 +40,7 @@ class AccountController {
     const { apiKey } = req.body || {};
 
     try {
-      await Account.updateOne({ apiKey }, { $set: { active: true } });
+      await Account.updateOne({ apiKey }, { $set: { stopAt: null } });
 
       res.send({ success: true });
     } catch (err) {
@@ -58,7 +57,7 @@ class AccountController {
     const { apiKey } = req.body || {};
 
     try {
-      await Account.updateOne({ apiKey }, { $set: { active: false } })
+      await Account.updateOne({ apiKey }, { $set: { stopAt: Date.now() } });
 
       res.send({ success: true });
     } catch (err) {

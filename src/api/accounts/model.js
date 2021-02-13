@@ -16,10 +16,9 @@ const schema = new Schema({
     required: true
   },
 
-  active: {
-    type: Boolean,
-    required: true,
-    default: true
+  stopDate: {
+    type: Date,
+    default: null
   },
 
   documents: Array
