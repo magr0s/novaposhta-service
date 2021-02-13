@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Novaposhta sync microservice",
   "scripts": {
-    "start": "node index.js",
+    "start": "NODE_ENV=production node index.js",
     "serve": "NODE_ENV=development nodemon index.js"
   },
   "main": "index.js",
