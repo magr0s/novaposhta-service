@@ -22,7 +22,7 @@ const schema = new Schema({
     default: true
   },
 
-  orders: Array
+  documents: Array
 });
 
 module.exports = model('Account', schema);
