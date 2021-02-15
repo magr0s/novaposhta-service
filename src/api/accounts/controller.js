@@ -3,9 +3,13 @@ const AccountService = require('./service');
 
 class AccountController {
   static async cron (_, res) {
-    //
-
-    res.end();
+    try {
+      await AccountService.sync();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      res.end();
+    }
   }
 
   static async add (req, res) {
