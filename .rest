@@ -1,5 +1,5 @@
 ### Create new account
-POST http://localhost:3001/add
+POST http://localhost:3000/add
 content-type: application/json
 
 {
@@ -9,7 +9,7 @@ content-type: application/json
 }
 
 ### Start account by apiKey
-PATCH http://localhost:3001/start
+PATCH http://localhost:3000.start
 content-type: application/json
 
 {
@@ -17,7 +17,7 @@ content-type: application/json
 }
 
 ### Stop account by apiKey
-PATCH http://localhost:3001/stop
+PATCH http://localhost:3000/stop
 content-type: application/json
 
 {
