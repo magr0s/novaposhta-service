@@ -67,7 +67,7 @@ class AccountService {
           }
 
           const cache = documents.reduce((acc, { Number, StatusCode }) => {
-            acc[Number] = Math.round(Math.random()).toString();
+            acc[Number] = StatusCode;
 
             return acc;
           }, {});
