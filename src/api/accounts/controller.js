@@ -1,4 +1,5 @@
 const Account = require('./model');
+const AccountService = require('./service');
 
 class AccountController {
   static async cron (_, res) {
@@ -20,7 +21,7 @@ class AccountController {
       const account = new Account({
         apiKey,
         webhookUrl,
-        statuses
+        statuses: statuses.map(n => n.toString())
       })
 
       await account.save();
@@ -40,7 +41,7 @@ class AccountController {
     const { apiKey } = req.body || {};
 
     try {
-      await Account.updateOne({ apiKey }, { $set: { stopAt: null } });
+      await Account.updateOne({ apiKey }, { $set: { stopDate: null } });
 
       res.send({ success: true });
     } catch (err) {
@@ -57,7 +58,7 @@ class AccountController {
     const { apiKey } = req.body || {};
 
     try {
-      await Account.updateOne({ apiKey }, { $set: { stopAt: Date.now() } });
+      await Account.updateOne({ apiKey }, { $set: { stopDate: Date.now() } });
 
       res.send({ success: true });
     } catch (err) {
