@@ -21,7 +21,7 @@ const schema = new Schema({
     default: null
   },
 
-  documents: Array
+  documentsCache: Object
 });
 
 module.exports = model('Account', schema);
