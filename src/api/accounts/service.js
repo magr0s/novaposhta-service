@@ -1,6 +1,7 @@
 const axios = require('axios');
-const NovaposhtaApi = require('../../libs/novaposhta');
 const Account = require('./model');
+const NovaposhtaApi = require('../../libs/novaposhta');
+const TelegramBot = require('../../libs/telegrambot');
 
 const { default: PQueue } = require('p-queue');
 
@@ -67,7 +68,7 @@ class AccountService {
           }
 
           const cache = documents.reduce((acc, { Number, StatusCode }) => {
-            acc[Number] = StatusCode;
+            acc[Number] = acc[Number] = StatusCode;
 
             return acc;
           }, {});
@@ -76,7 +77,7 @@ class AccountService {
         } catch (err) {
           console.log(err);
 
-          // error notification
+          await TelegramBot.sendMessage(`[${apiKey}] ${err.toString()}`);
         }
       }
     );
