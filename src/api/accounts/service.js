@@ -73,7 +73,9 @@ class AccountService {
             return acc;
           }, {});
 
-          await Account.updateOne({ apiKey }, { documentsCache: cache });
+          await Account.updateOne({ apiKey }, {
+            documentsCache: Object.assign({}, documentsCache, cache)
+          });
         } catch (err) {
           console.log(err);
 
