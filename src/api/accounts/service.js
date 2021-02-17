@@ -44,14 +44,14 @@ class AccountService {
             const promises = documents.reduce((p, data) => {
               const {
                 Number: number,
-                StatusCode: status
+                StatusCode: statusCode
               } = data;
 
               // find modify status
               if (
                 typeof (documentsCache[number] !== 'undefined') &&
-                statuses.includes(status) &&
-                documentsCache[number] !== status
+                statuses.includes(statusCode) &&
+                documentsCache[number] !== statusCode
               ) {
                 const request = axios.post(url, data, {
                   headers: { 'Content-Type': 'application/json' }
@@ -67,8 +67,8 @@ class AccountService {
             await Promise.all(promises);
           }
 
-          const cache = documents.reduce((acc, { Number, StatusCode }) => {
-            acc[Number] = acc[Number] = StatusCode;
+          const cache = documents.reduce((acc, { Number: number, StatusCode: statusCode }) => {
+            acc[number] = statusCode;
 
             return acc;
           }, {});
