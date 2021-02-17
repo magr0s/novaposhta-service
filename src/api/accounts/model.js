@@ -16,6 +16,11 @@ const schema = new Schema({
     required: true
   },
 
+  clearStatuses: {
+    type: Array,
+    required: true
+  },
+
   stopDate: {
     type: Date,
     default: null

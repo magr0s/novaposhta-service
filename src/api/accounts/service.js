@@ -19,7 +19,8 @@ class AccountService {
       apiKey,
       webhookUrl: url,
       documentsCache = {},
-      statuses = []
+      statuses = [],
+      clearStatuses = []
     }) =>
       async () => {
         const np = new NovaposhtaApi(apiKey);
@@ -67,14 +68,23 @@ class AccountService {
             await Promise.all(promises);
           }
 
-          const cache = documents.reduce((acc, { Number: number, StatusCode: statusCode }) => {
-            acc[number] = statusCode;
+          // Build new account cache
+          const cache = Object.assign({},
+            documentsCache,
 
-            return acc;
-          }, {});
+            documents.reduce((acc, { Number: number, StatusCode: statusCode }) => {
+              acc[number] = statusCode;
+
+              return acc;
+            }, {})
+          );
+
+          // Clear account cache
+          Object.entries(cache)
+            .forEach(([k, v]) => clearStatuses.includes(v) && delete cache[k]);
 
           await Account.updateOne({ apiKey }, {
-            documentsCache: Object.assign({}, documentsCache, cache)
+            documentsCache: cache
           });
         } catch (err) {
           console.log(err);

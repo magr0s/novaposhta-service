@@ -18,15 +18,19 @@ class AccountController {
     const {
       apiKey,
       webhookUrl,
-      statuses
+      statuses = [],
+      clearStatuses = []
     } = body;
+
+    const toString = (arr) => arr.map(n => n.toString());
 
     try {
       const account = new Account({
         apiKey,
         webhookUrl,
-        statuses: statuses.map(n => n.toString())
-      })
+        statuses: toString(statuses),
+        clearStatuses: toString(clearStatuses),
+      });
 
       await account.save();
 
