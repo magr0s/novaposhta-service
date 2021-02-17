@@ -1,3 +1,6 @@
+### Run sync service
+GET http://localhost:3000/cron
+
 ### Create new account
 POST http://localhost:3000/add
 content-type: application/json
@@ -5,7 +8,8 @@ content-type: application/json
 {
     "apiKey": "{{$guid}}",
     "webhookUrl": "{{$guid}}",
-    "statuses": [1, 2, 3]
+    "statuses": [1, 2, 3],
+    "clearStatuses": [3]
 }
 
 ### Start account by apiKey
