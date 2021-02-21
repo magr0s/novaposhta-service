@@ -8,14 +8,15 @@ class NovaposhtaApi {
   }
 
   get invoiceDocument () {
-    const data = {
+    const config = {
       apiKey: this.token,
       modelName: 'InternetDocument'
     }
 
-    const getDocumentList = (params) => this.request(
-      Object.assign({}, params, data, {
-        calledMethod: 'getDocumentList'
+    const getDocumentList = (params = {}) => this.request(
+      Object.assign({}, config, {
+        calledMethod: 'getDocumentList',
+        methodProperties: params
       })
     );
 
